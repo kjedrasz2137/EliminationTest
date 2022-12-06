@@ -6,5 +6,5 @@ This repository contains the solution to the first task of the Elimination Test 
 
 * [Krzysztof Jędraszek](https://github.com/kjedrasz2137)
 * [Filip Erni](https://github.com/filiperni)
-* [Beniamin Sereda](https://github.com/bse99)
+* [Beniamin Sereda](https://github.com/ujo142)
 * [Jakub Pilarski](https://github.com/limmesi)
