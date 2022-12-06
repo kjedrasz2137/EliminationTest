@@ -3,4 +3,6 @@ zamianę małego L na duże i (“l” -> “I”), a litery “w” na “vv”
 powtarzanie niektórych liter w danym wyrazie, np. “ssłoowo”
 słowa mogą występować z różnymi końcówkami fleksyjnymi
 próby obejścia filtra poprzez dostawienie do wyrazu losowego znaku (na przykładspacji), lub zamiana kolejności dwóch liter (dla większej ilości zamian, możnaprzyjąć, że słowo staje się nieczytelne).
-kropka 
+kropka w słowie
+spacja w słowie 
+sh -> sz
