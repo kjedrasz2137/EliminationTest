@@ -30,9 +30,8 @@ def main():
     }
 
 
-    # ___step_functions___ 
-    
 
+    # ___step_functions___ 
     def lower_case(word):    
         # Step no. 1
         return word.lower()
@@ -65,7 +64,6 @@ def main():
 
     
     # ___main_loop___     
-    
     for word in test_data[0]:
         # Steps 1-4
         new_word = lower_case(word)
