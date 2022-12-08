@@ -65,16 +65,16 @@ def main():
     
     # ___main_loop___     
     for word in test_data[0]:
-        # Steps 1-4
+        # Steps no. 1-6
         new_word = lower_case(word)
         new_word = remove_special_chars(new_word)
         new_word = replace_chars(new_word)
         new_word = remove_repeating_chars(new_word)
     
-        # Step no. 5-10
+        # Step no. 7-10
         for i in range(len(new_word)):
             
-            # Step no. 5
+            # Step no. 7
             if i != 0:
                start = new_word[:i]
                middle = new_word[i]
@@ -83,21 +83,21 @@ def main():
             else:
                prop_word = new_word
             
-            # Step no. 6
-            # (TO DO)
-            
-            # Step no. 7
-            #(TO DO)
-            
             # Step no. 8
-            prop_word = nlp(prop_word) 
-            for words in prop_word:
-                prop_word = words.lemma_
+            # (TO DO)
             
             # Step no. 9
             #(TO DO)
             
             # Step no. 10
+            prop_word = nlp(prop_word) 
+            for words in prop_word:
+                prop_word = words.lemma_
+            
+            # Step no. 11
+            #(TO DO)
+            
+            # Step no. 12
             if (prop_word in black_list) or (prop_word in wulgaryzmy.values.tolist()):
                l = len(word)
                print(l*"*"+f" ({word})")
