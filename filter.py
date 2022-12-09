@@ -1,70 +1,66 @@
 import pandas as pd
 import spacy
-import re
+
+from processing import Processing
+from helpers import levenshtein
 
 
+class Filter:
+    def __init__(self):
+        self.test_data = pd.read_csv("test_data.csv", header=None)
+        self.vulgar_words = pd.read_csv("vulgar_words.csv", header=None)
+        self.black_list = ["dziwka", "szmata", "kurwa", "pedał", "chuj",
+                           "zjeb", "frajer", "dymać", "pierdolić", "zajebiście", "politechnika"]
+        self.black_list_lemmatized = []
+        self.char_to_replace = {
+            "0": "o",
+            "1": "i",
+            "2": "z",
+            "3": "e",
+            "4": "a",
+            "5": "s",
+            "v": "u",
+            "vv": "w",
+            "I": "l",
+            "sh": "sz",
+        }
 
+        self.optional_char_to_replace = {
+            "om": "ą",
+            "l": "ł"
+        }
 
-def main():
-    nlp = spacy.load("pl_core_news_sm")
-    test_data = pd.read_csv("/Users/ben/python_projects/hackathon_gcm_2023/test_data.csv", header=None)
-    wulgaryzmy = pd.read_csv("/Users/ben/python_projects/hackathon_gcm_2023/wulgaryzmy.csv", header=None, index_col=[0])
-    black_list = ["dziwka", "szmata", "kurwa", "pedał", "chuj", "zjeb", "frajer", "dymać", "pierdolić", "zajebiście"]
+        self.nlp = spacy.load("pl_core_news_lg")
 
-    char_to_replace = {
-        "0": "o",
-        "1": "i",
-        "2": "z",
-        "3": "e",
-        "4": "a",
-        "5": "s",
-        "v": "u",
-        "vv": "w",
-        "I": "l",
-        "sh": "sz",
-    }
+        # lemmatize vulgar words
+        for i in range(len(self.vulgar_words)):
+            self.vulgar_words[0][i] = self.preprocess(
+                self.vulgar_words[0][i])
 
-    optional_char_to_replace = {
-        "om": "ą",
-        "l": "ł"
-    }
+        # lemmatized black list
+        for word in self.black_list:
+            self.black_list_lemmatized.append(self.preprocess(word))
 
+    def preprocess(self, word):
+        processing = Processing()
+        word = processing.lower_case(word)
+        word = processing.remove_special_chars(word)
+        word = processing.replace_chars(word, self.char_to_replace)
+        word = processing.remove_repeating_chars(word)
+        word = processing.lemmatize(word, self.nlp)
+        return word
 
-    
-    for word in test_data[0]:
-        # Step no. 1
-        n_word = word.lower()
-        
-        # Steop no. 2
-        pattern = r'[^A-Za-z0-5]+'
-        n_word = re.sub(pattern, '', n_word)
-        n_word = re.sub(r"\s+", "", n_word, flags=re.UNICODE)
-       
-        # Step no. 3
-        for i in range(len(char_to_replace)):
-            n_word = re.sub(list(char_to_replace.keys())[i], list(char_to_replace.values())[i], n_word)
-        
-        # Step no. 4
-        new_word = n_word[0]
-        for i in range(1, len(n_word)):
-            if n_word[i]!=n_word[i-1]:
-                new_word += n_word[i]
-            else:
-                pass
-  
-        # Step no. 5
-        new_word = nlp(new_word) 
-        for words in new_word:
-            new_word = words.lemma_
-       
-        # Step no. 6+7
-        if new_word in black_list or new_word in wulgaryzmy.values:
-            l = len(word)
-            print(l*"*"+f" ({word})")
-        else:
-            print(word)
-            
-if __name__ == "__main__":
-    main()
-
-
+    def isVulgar(self, word):
+        word = self.preprocess(word)
+        # check similarity
+        for i in range(len(self.vulgar_words)):
+            if (levenshtein(self.vulgar_words[0][i], word) < 2) or (levenshtein(self.vulgar_words[0][i], word) == 2 and len(word) > 4):
+                return True
+            if self.vulgar_words[0][i] in word:
+                return True
+        for black_list_word in self.black_list_lemmatized:
+            if (levenshtein(black_list_word, word) < 2) or (levenshtein(black_list_word, word) == 2 and len(word) > 4):
+                return True
+            if black_list_word in word:
+                return True
+        return False

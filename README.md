@@ -1,6 +1,6 @@
 # EliminationTest
 
-This repository contains the solution to the first task of the Elimination Test - the first stage of BEST Coding Marathon 2023
+This repository contains the solution to the first task of the Elimination Test - the first stage of BEST Coding Marathon 2023.
 
 ## Problem description
 
@@ -10,8 +10,7 @@ In the internet age, we increasingly encounter filtering of comments or chat in 
 
 The goal of the task is to implement a filter that replaces letters of Polish swear words with asterisks (*).
 
-## Authors
-
+## Team `*FutureTeamName*`
 * [Krzysztof Jędraszek](https://github.com/kjedrasz2137)
 * [Filip Erni](https://github.com/filiperni)
 * [Beniamin Sereda](https://github.com/ujo142)
