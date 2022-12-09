@@ -21,6 +21,8 @@ class Processing:
         return word
 
     def remove_repeating_chars(self, word):
+        if word == "":
+            return word
         new_word = word[0]
         for i in range(1, len(word)):
             if word[i] != word[i-1]:
