@@ -64,7 +64,6 @@ class App:
         self.black_list_field.insert(tk.END, ", ".join(self.filter.black_list))
 
     def click(self):
-        #self.update()
         # get input from input field
         input = self.input_field.get(1.0, tk.END)
 
@@ -72,7 +71,6 @@ class App:
         words_list = []
         output = ""
         for word in input:
-            
             if self.filter.isVulgar(word):
                 words_list.append(word[0] + "*" * (len(word) - 1))
             else:
