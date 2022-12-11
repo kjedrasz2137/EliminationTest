@@ -59,7 +59,7 @@ Please note that the words must be separated by a comma.
 
 ## Example video
 
-[![Example video](https://img.youtube.com/vi/dQw4w9WgXcQ/0.jpg)](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
+https://user-images.githubusercontent.com/77445990/206927576-8b7ed305-972b-4ab1-b5f4-8a9aaa2f9f22.mp4
 
 ## Team `*FutureTeamName*`
 
