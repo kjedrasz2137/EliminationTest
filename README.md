@@ -32,7 +32,7 @@ Algorithm for checking if a word is a swear word:
 
 For every blacklisted word:
 1. If the Levenshtein distance between the word and the blacklisted word is less than 2, the word is a swear word.
-2. If the word is a substring of the blacklisted word, the word is a swear word.
+2. If the blacklisted word is a substring of the word, the word is a swear word.
 3. If similarity between the word and the blacklisted word is greater than 0.95, the word is a swear word.
 
 If the word is a swear word, we replace all letters with asterisks. Otherwise, we leave the word unchanged.
@@ -59,7 +59,7 @@ Please note that the words must be separated by a comma.
 
 ## Example video
 
-[![Rickroll video](https://img.youtube.com/vi/dQw4w9WgXcQ/0.jpg)](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
+[![Example video](https://img.youtube.com/vi/dQw4w9WgXcQ/0.jpg)](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
 
 ## Team `*FutureTeamName*`
 
