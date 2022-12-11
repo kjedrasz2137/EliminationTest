@@ -15,3 +15,8 @@ The goal of the task is to implement a filter that replaces letters of Polish sw
 * [Filip Erni](https://github.com/filiperni)
 * [Beniamin Sereda](https://github.com/ujo142)
 * [Jakub Pilarski](https://github.com/limmesi)
+
+
+## Required files
+
+To run application you have to download pretrained fasttext model from https://drive.google.com/open?id=1yfReM7EJGL1vk2dNbyM7X10I6k6lJMuX. All files (8) put in /fasttext folder
