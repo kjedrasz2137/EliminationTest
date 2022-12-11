@@ -8,7 +8,7 @@ from helpers import levenshtein
 class Filter:
     def __init__(self):
         self.vulgar_words = pd.read_csv("data/vulgar_words.csv", header=None)
-        self.black_list = ["dziwka", "szmata", "kurwa", "pedał", "chuj",
+        self.black_list = ["dziwka", "szmata", "debil", "kurwa", "pedał", "chuj",
                            "zjeb", "frajer", "dymać", "pierdolić", "zajebiście"]
         self.black_list_lemmatized = []
         self.char_to_replace = {
