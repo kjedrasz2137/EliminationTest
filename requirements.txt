@@ -1,5 +1,8 @@
 pandas==1.5.2
 spacy==3.4.3
-pl-core-news-sm @ https://github.com/explosion/spacy-models/releases/download/pl_core_news_sm-3.4.0/pl_core_news_sm-3.4.0-py3-none-any.whl
-
-
+pl-core-news-lg @ https://github.com/explosion/spacy-models/releases/download/pl_core_news_lg-3.4.0/pl_core_news_lg-3.4.0-py3-none-any.whl
+fasttext==0.9.2
+gensim==4.2.0
+gradio==3.12.0
+ipykernel==6.17.1
+tk==0.1.0
