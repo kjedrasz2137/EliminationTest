@@ -1,4 +1,4 @@
-# compute levenstein distance between two strings
+# compute Levenshtein distance between two strings
 def levenshtein(s1, s2):
     if len(s1) < len(s2):
         return levenshtein(s2, s1)
