@@ -64,7 +64,7 @@ class App:
         self.black_list_field.insert(tk.END, ", ".join(self.filter.black_list))
 
     def click(self):
-        self.update()
+        #self.update()
         # get input from input field
         input = self.input_field.get(1.0, tk.END)
 
@@ -72,8 +72,9 @@ class App:
         words_list = []
         output = ""
         for word in input:
+            
             if self.filter.isVulgar(word):
-                words_list.append(word[0] + "*" * (len(word) - 2) + word[-1])
+                words_list.append(word[0] + "*" * (len(word) - 1))
             else:
                 words_list.append(word)
         output = " ".join(words_list)
@@ -83,16 +84,6 @@ class App:
         self.output_field.delete(1.0, tk.END)
         self.output_field.insert(tk.END, output)
         self.output_field.config(state=tk.DISABLED)
-
-    def update(self):
-        # get input from black list field
-        input = self.black_list_field.get(1.0, tk.END)
-        input = input.split(",")
-        input = [word.strip() for word in input]
-        self.filter.black_list = input
-        # preprocess input
-        lemmatized_input = [self.filter.preprocess(word) for word in input]
-        self.filter.black_list_lemmatized = lemmatized_input
 
     def run(self):
         self.window.mainloop()

@@ -9,7 +9,7 @@ class Processing:
         return word.lower()
 
     def remove_special_chars(self, word):
-        pattern = r'[^A-Za-z0-5]+'
+        pattern = r'[^A-Za-z0-5ąćęłńóśćźż]+'
         word = re.sub(pattern, '', word)
         word = re.sub(r"\s+", "", word, flags=re.UNICODE)
         return word
@@ -40,10 +40,4 @@ class Processing:
         for i in range(len(optional_char_to_replace)):
             word = re.sub(list(optional_char_to_replace.keys())[i], list(
                 optional_char_to_replace.values())[i], word)
-        return word
-
-    def lemmatize(self, word, nlp):
-        word = nlp(word)
-        for words in word:
-            word = words.lemma_
         return word
